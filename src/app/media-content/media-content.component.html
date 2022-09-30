@@ -1,0 +1,57 @@
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 border-bottom">
+  <div class="container text-center">
+    <img src="{{media.mediaInfo.picture}}">
+    <div><strong>{{media.mediaInfo.name}}</strong></div>
+    <div>({{media.mediaInfo.year}})</div>
+    <div>{{media.type}}</div>
+  </div>
+  <div class="container text-center d-flex align-items-center justify-content-center">
+    {{media.mediaInfo.description}}
+  </div>
+  <div class="container text-center d-flex align-items-center justify-content-center">
+      <button class="btn btn-danger" (click)="delete()">Delete</button>
+      <button class="btn btn-primary" (click)="open(content)">Edit</button>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Number List: </h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <label for="name">Name/Title:</label>
+        <div class="input-group">
+          <input id="name" class="form-control" type="text" name="name" value="{{name}}" [(ngModel)]="name">
+        </div>
+        <label for="startDate">Year Premiered / Published:</label>
+        <div class="input-group">
+          <input id="startDate" name="startDate" class="form-control" placeholder="ex: {{year}}" type="number"
+                 min="0" max="{{year}}" value="{{year}}" [(ngModel)]="year">
+        </div>
+        <label for="typeOf">Type of Media:</label>
+        <div class="input-group">
+          <select id="typeOf" name="typeOf" class="form-control" [(ngModel)]="typeOfMedia" value="{{typeOfMedia}}">
+            <option value="Movie">Movie</option>
+            <option value="Book">Book</option>
+          </select>
+        </div>
+        <label for="description">Description:</label>
+        <div class="input-group">
+          <textarea id="description" name="description" class="form-control" rows="5" value="{{description}}" [(ngModel)]="description"></textarea>
+        </div>
+        <label for="imgURL">Cover Image URL:</label>
+        <div class="input-group">
+          <input id="imgURL" name="imgURL" class="form-control" type="text" value="{{picURL}}" [(ngModel)]="picURL">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="edit()">Save</button>
+  </div>
+</ng-template>
+
+

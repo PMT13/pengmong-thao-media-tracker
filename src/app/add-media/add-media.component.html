@@ -1,0 +1,39 @@
+<button id="addMedia" class="btn btn-primary" (click)="open(content)">+</button>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Number List: </h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click');resetInput()"></button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="mb-3">
+        <label for="name">Name/Title:</label>
+        <div class="input-group">
+          <input id="name" class="form-control" type="text" name="name" [(ngModel)]="name">
+        </div>
+        <label for="startDate">Year Premiered / Published:</label>
+        <div class="input-group">
+          <input id="startDate" name="startDate" class="form-control" placeholder="ex: {{year}}" type="number" min="0" max="{{year}}" [(ngModel)]="year">
+        </div>
+        <label for="typeOf">Type of Media:</label>
+        <div class="input-group">
+          <select id="typeOf" name="typeOf" class="form-control" [(ngModel)]="typeOfMedia">
+            <option value="Movie">Movie</option>
+            <option value="Book">Book</option>
+          </select>
+        </div>
+        <label for="description">Description:</label>
+        <div class="input-group">
+          <textarea id="description" name="description" class="form-control" rows="5" [(ngModel)]="description"></textarea>
+        </div>
+        <label for="imgURL">Cover Image URL:</label>
+        <div class="input-group">
+          <input id="imgURL" name="imgURL" class="form-control" type="text" [(ngModel)]="picURL">
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="addToList()">Add to List</button>
+  </div>
+</ng-template>

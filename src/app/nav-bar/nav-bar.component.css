@@ -1,0 +1,7 @@
+ul{
+  margin-left: auto;
+  margin-right:auto;
+}
+li:hover{
+  background-color: #0d6efd;
+}
